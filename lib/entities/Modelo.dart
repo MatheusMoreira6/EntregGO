@@ -17,4 +17,11 @@ class Modelo {
   set marca(Marca value) {
     _marca = value;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'marca': _marca.toMap(),
+      'nome': _nome,
+    };
+  }
 }

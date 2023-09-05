@@ -17,4 +17,11 @@ class Cidade {
   set nome(String value) {
     _nome = value;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'nome': _nome,
+      'estado': _estado.toMap(),
+    };
+  }
 }

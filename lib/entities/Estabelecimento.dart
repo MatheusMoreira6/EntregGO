@@ -11,31 +11,21 @@ class Estabelecimento {
   String _email;
   String _telefone;
   Endereco _endereco;
-  String _tipo;
   String _login;
   String _senha;
-  List<Avaliacao>? _avaliacoes;
 
   Estabelecimento(
-      this._id,
-      this._razaoSocial,
-      this._nomeFantasia,
-      this._dataAbertura,
-      this._porteEmpresa,
-      this._cnpj,
-      this._email,
-      this._telefone,
-      this._endereco,
-      this._tipo,
-      this._login,
-      this._senha,
-      this._avaliacoes);
-
-  List<Avaliacao> get avaliacoes => _avaliacoes!;
-
-  set avaliacoes(List<Avaliacao> value) {
-    _avaliacoes = value;
-  }
+    this._razaoSocial,
+    this._nomeFantasia,
+    this._dataAbertura,
+    this._porteEmpresa,
+    this._cnpj,
+    this._email,
+    this._telefone,
+    this._endereco,
+    this._login,
+    this._senha,
+  );
 
   String get senha => _senha;
 
@@ -47,12 +37,6 @@ class Estabelecimento {
 
   set login(String value) {
     _login = value;
-  }
-
-  String get tipo => _tipo;
-
-  set tipo(String value) {
-    _tipo = value;
   }
 
   Endereco get endereco => _endereco;
@@ -109,51 +93,19 @@ class Estabelecimento {
     _id = value;
   }
 
-  //Validação das Informações
-
-  bool validarCNPJ() {
-    String cnpj = this._cnpj.replaceAll(RegExp(r'\D'), '');
-
-    if (cnpj.length != 14) return false;
-
-    List<int> numbers =
-        cnpj.split('').map((number) => int.parse(number)).toList();
-
-    // Verifica se todos os dígitos são iguais (caso contrário, não é válido)
-    if (Set.from(numbers).length == 1) return false;
-
-    int sum = 0;
-    int digit = 0;
-    int weight = 2;
-
-    for (int i = 11; i >= 0; i--) {
-      sum += numbers[i] * weight;
-      weight = (weight == 9) ? 2 : weight + 1;
-
-      if (i == 2) {
-        digit = sum % 11;
-        digit = digit < 2 ? 0 : 11 - digit;
-
-        if (numbers[12] != digit) return false;
-        sum = 0;
-      }
-    }
-
-    digit = sum % 11;
-    digit = digit < 2 ? 0 : 11 - digit;
-
-    if (numbers[13] != digit) return false;
-
-    return true;
-  }
-
-  bool validarEmail() {
-    RegExp regex = RegExp(
-      r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+(\.[a-zA-Z]+)?$',
-      caseSensitive: false,
-      multiLine: false,
-    );
-
-    return regex.hasMatch(this._email);
+  Map<String, dynamic> toMap() {
+    return {
+      'id': _id,
+      'razaoSocial': _razaoSocial,
+      'nomeFantasia': _nomeFantasia,
+      'dataAbertura': _dataAbertura.toIso8601String(),
+      'porteEmpresa': _porteEmpresa,
+      'cnpj': _cnpj,
+      'email': _email,
+      'telefone': _telefone,
+      'endereco': _endereco.toMap(),
+      'login': _login,
+      'senha': _senha,
+    };
   }
 }

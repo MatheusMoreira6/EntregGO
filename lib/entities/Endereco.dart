@@ -31,4 +31,13 @@ class Endereco {
   set rua(String value) {
     _rua = value;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'rua': _rua,
+      'numero': _numero,
+      'bairro': _bairro,
+      'cidade': _cidade.toMap(),
+    };
+  }
 }

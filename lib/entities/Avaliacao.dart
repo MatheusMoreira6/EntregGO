@@ -15,4 +15,11 @@ class Avaliacao {
   set nota(int value) {
     _nota = value;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'nota': _nota,
+      'comentario': _comentario,
+    };
+  }
 }

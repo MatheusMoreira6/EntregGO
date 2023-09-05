@@ -31,4 +31,13 @@ class Veiculo {
   set modelo(Modelo value) {
     _modelo = value;
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'modelo': _modelo.toMap(),
+      'cor': _cor,
+      'ano': _ano.toIso8601String(),
+      'documento': _documento,
+    };
+  }
 }
