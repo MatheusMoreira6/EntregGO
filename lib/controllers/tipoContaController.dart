@@ -1,5 +1,5 @@
-import 'package:entreggo/views/cadastroEntregador.dart';
 import 'package:entreggo/views/cadastroEstabelecimento.dart';
+import 'package:entreggo/views/cadastroEntregador.dart';
 import 'package:flutter/material.dart';
 
 class TipoContaController {

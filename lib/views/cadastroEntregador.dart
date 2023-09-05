@@ -1,5 +1,4 @@
 import 'package:entreggo/controllers/cadastroEntregadorController.dart';
-import 'package:entreggo/controllers/cadastroEstabelecimentoController.dart';
 import 'package:flutter/material.dart';
 
 class CadastroEntregador extends StatefulWidget {
