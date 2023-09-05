@@ -51,7 +51,7 @@ class Login extends StatelessWidget {
                       horizontal: 50,
                     ),
                     child: TextField(
-                      controller: loginController.getControllerUsuario(),
+                      controller: loginController.usuario,
                       decoration: const InputDecoration(
                         hintText: 'Nome de Usuário:',
                         hintStyle: TextStyle(
@@ -79,7 +79,7 @@ class Login extends StatelessWidget {
                       horizontal: 50,
                     ),
                     child: TextField(
-                      controller: loginController.getControllerSenha(),
+                      controller: loginController.senha,
                       decoration: const InputDecoration(
                         hintText: 'Senha:',
                         hintStyle: TextStyle(

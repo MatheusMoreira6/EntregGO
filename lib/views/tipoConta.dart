@@ -48,16 +48,16 @@ class _TipoContaState extends State<TipoConta> {
                     child: ElevatedButton(
                       onPressed: () {
                         setState(() {
-                          if (tipoContaController.getBotaoSelecionado() != 1) {
-                            tipoContaController.setBotaoSelecionado(1);
+                          if (tipoContaController.botaoSelecionado != 1) {
+                            tipoContaController.botaoSelecionado = 1;
                           } else {
-                            tipoContaController.setBotaoSelecionado(0);
+                            tipoContaController.botaoSelecionado = 0;
                           }
                         });
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
-                            tipoContaController.getBotaoSelecionado() == 1 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
+                            tipoContaController.botaoSelecionado == 1 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
                         padding: const EdgeInsets.all(20),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(22),
@@ -91,16 +91,16 @@ class _TipoContaState extends State<TipoConta> {
                     child: ElevatedButton(
                       onPressed: () {
                         setState(() {
-                          if (tipoContaController.getBotaoSelecionado() != 2) {
-                            tipoContaController.setBotaoSelecionado(2);
+                          if (tipoContaController.botaoSelecionado != 2) {
+                            tipoContaController.botaoSelecionado = 2;
                           } else {
-                            tipoContaController.setBotaoSelecionado(0);
+                            tipoContaController.botaoSelecionado = 0;
                           }
                         });
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
-                            tipoContaController.getBotaoSelecionado() == 2 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
+                            tipoContaController.botaoSelecionado == 2 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
                         padding: const EdgeInsets.all(20),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(22),
@@ -146,7 +146,7 @@ class _TipoContaState extends State<TipoConta> {
                 padding: const EdgeInsets.only(top: 130),
                 child: ElevatedButton(
                   onPressed: () {
-                    tipoContaController.continuar();
+                    tipoContaController.continuar(context);
                   },
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
@@ -156,8 +156,7 @@ class _TipoContaState extends State<TipoConta> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(22),
                     ),
-                    backgroundColor:
-                        tipoContaController.getBotaoSelecionado() != 0 ? const Color(0xFF004AAD) : const Color(0xFF105AA1),
+                    backgroundColor: tipoContaController.botaoSelecionado != 0 ? const Color(0xFF004AAD) : const Color(0xFF105AA1),
                   ),
                   child: const Text(
                     'CONTINUAR',

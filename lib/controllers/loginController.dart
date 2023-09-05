@@ -5,13 +5,9 @@ class LoginController {
   TextEditingController _usuario = TextEditingController();
   TextEditingController _senha = TextEditingController();
 
-  TextEditingController getControllerUsuario() {
-    return (_usuario);
-  }
+  TextEditingController get usuario => _usuario;
 
-  TextEditingController getControllerSenha() {
-    return (_senha);
-  }
+  TextEditingController get senha => _senha;
 
   void login() {}
 
