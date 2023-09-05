@@ -1,4 +1,11 @@
+import 'package:entreggo/entities/Cidade.dart';
+import 'package:entreggo/entities/Endereco.dart';
+import 'package:entreggo/entities/Estado.dart';
+import 'package:entreggo/entities/Estabelecimento.dart';
+import 'package:entreggo/models/estabelecimentoModel.dart';
 import 'package:flutter/material.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
 
 class CadastroEstabelecimentoController {
   final TextEditingController _razaoSocial = TextEditingController();
@@ -51,5 +58,51 @@ class CadastroEstabelecimentoController {
     _checkboxVerificacao = value;
   }
 
-  void cadastrar() {}
+  void cadastrar() {
+    final senha = sha256.convert(utf8.encode(_senha.text)).toString();
+
+    final Estado estado = Estado(_estado.text);
+    final Cidade cidade = Cidade(_cidade.text, estado);
+    final Endereco endereco = Endereco(
+      _logradouro.text,
+      int.parse(numero.text),
+      _bairro.text,
+      cidade,
+    );
+
+    /*
+    * Salva o entregador no banco.
+    */
+    EstabelecimentoModel.salvarEstabelecimento(
+      Estabelecimento(
+          _razaoSocial.text,
+          _nomeFantasia.text,
+          DateTime.parse(_dataAbertura.text),
+          _porteEmpresa.text,
+          _cnpj.text,
+          _email.text,
+          _telefone.text,
+          endereco,
+          _nomeUsuario.text,
+          senha),
+    );
+
+    /*
+    * Limpa todos os campos
+    */
+    _razaoSocial.clear();
+    _nomeFantasia.clear();
+    _dataAbertura.clear();
+    _porteEmpresa.clear();
+    _cnpj.clear();
+    _email.clear();
+    _telefone.clear();
+    _logradouro.clear();
+    _numero.clear();
+    _bairro.clear();
+    _cidade.clear();
+    _estado.clear();
+    _nomeUsuario.clear();
+    _senha.clear();
+  }
 }
