@@ -1,3 +1,4 @@
+import 'package:entreggo/views/cadastroEntregador.dart';
 import 'package:entreggo/views/cadastroEstabelecimento.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class TipoContaController {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CadastroEstabelecimento(),
+          builder: (context) => CadastroEntregador(),
         ),
       );
     }
