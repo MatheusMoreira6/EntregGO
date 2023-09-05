@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:entreggo/controllers/loginController.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  Login({Key? key}) : super(key: key);
+
+  final LoginController loginController = LoginController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +45,14 @@ class Login extends StatelessWidget {
                       width: 130,
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 15,
                       horizontal: 50,
                     ),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: loginController.getControllerUsuario(),
+                      decoration: const InputDecoration(
                         hintText: 'Nome de Usuário:',
                         hintStyle: TextStyle(
                           color: Color(0xFFFFFFFF),
@@ -64,19 +68,19 @@ class Login extends StatelessWidget {
                           ),
                         ),
                       ),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color(0xFFFFFFFF),
                       ),
-                      keyboardType: TextInputType.text,
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 15,
                       horizontal: 50,
                     ),
                     child: TextField(
-                      decoration: InputDecoration(
+                      controller: loginController.getControllerSenha(),
+                      decoration: const InputDecoration(
                         hintText: 'Senha:',
                         hintStyle: TextStyle(
                           color: Color(0xFFFFFFFF),
@@ -88,11 +92,10 @@ class Login extends StatelessWidget {
                           borderSide: BorderSide(color: Colors.white),
                         ),
                       ),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color(0xFFFFFFFF),
                       ),
                       obscureText: true,
-                      keyboardType: TextInputType.text,
                     ),
                   ),
                   Padding(
@@ -119,12 +122,17 @@ class Login extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Text(
-                      'Não tem Conta? Cadastre-se',
-                      style: TextStyle(
-                        color: Color(0xFFFFFFFF),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: TextButton(
+                      onPressed: () {
+                        loginController.cadastrar(context);
+                      },
+                      child: const Text(
+                        'Não tem Conta? Cadastre-se',
+                        style: TextStyle(
+                            color: Color(0xFFFFFFFF),
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
