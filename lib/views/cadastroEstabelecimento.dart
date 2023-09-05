@@ -168,35 +168,12 @@ class _CadastroEstabelecimentoState extends State<CadastroEstabelecimento> {
                       ),
                       keyboardType: TextInputType.emailAddress,
                     ),
-                    TextField(
-                      controller: cadastroEstabelecimentoController.telefone,
-                      decoration: const InputDecoration(
-                        hintText: 'Telefone:',
-                        hintStyle: TextStyle(
-                          color: Color(0xFFFFFFFF),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFFFFFFFF),
-                          ),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFFFFFFFF),
-                          ),
-                        ),
-                      ),
-                      style: const TextStyle(
-                        color: Color(0xFFFFFFFF),
-                      ),
-                      keyboardType: TextInputType.phone,
-                    ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 25),
                       child: TextField(
-                        controller: cadastroEstabelecimentoController.logradouro,
+                        controller: cadastroEstabelecimentoController.telefone,
                         decoration: const InputDecoration(
-                          hintText: 'Logradouro:',
+                          hintText: 'Telefone:',
                           hintStyle: TextStyle(
                             color: Color(0xFFFFFFFF),
                           ),
@@ -214,8 +191,31 @@ class _CadastroEstabelecimentoState extends State<CadastroEstabelecimento> {
                         style: const TextStyle(
                           color: Color(0xFFFFFFFF),
                         ),
-                        keyboardType: TextInputType.streetAddress,
+                        keyboardType: TextInputType.phone,
                       ),
+                    ),
+                    TextField(
+                      controller: cadastroEstabelecimentoController.logradouro,
+                      decoration: const InputDecoration(
+                        hintText: 'Logradouro:',
+                        hintStyle: TextStyle(
+                          color: Color(0xFFFFFFFF),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFFFFFFF),
+                          ),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFFFFFFF),
+                          ),
+                        ),
+                      ),
+                      style: const TextStyle(
+                        color: Color(0xFFFFFFFF),
+                      ),
+                      keyboardType: TextInputType.streetAddress,
                     ),
                     Row(
                       children: [
