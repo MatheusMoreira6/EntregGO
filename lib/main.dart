@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:entreggo/views/login.dart';
+import 'package:entreggo/models/firebaseInitialization.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FirebaseInitialization.initializeFirebase();
   runApp(const MyApp());
 }
 
