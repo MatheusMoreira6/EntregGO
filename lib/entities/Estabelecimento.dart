@@ -1,4 +1,3 @@
-import 'package:entreggo/entities/Avaliacao.dart';
 import 'package:entreggo/entities/Endereco.dart';
 
 class Estabelecimento {
