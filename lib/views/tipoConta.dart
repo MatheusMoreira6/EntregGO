@@ -56,8 +56,7 @@ class _TipoContaState extends State<TipoConta> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            tipoContaController.botaoSelecionado == 1 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
+                        backgroundColor: tipoContaController.botaoSelecionado == 1 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
                         padding: const EdgeInsets.all(20),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(22),
@@ -99,8 +98,7 @@ class _TipoContaState extends State<TipoConta> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            tipoContaController.botaoSelecionado == 2 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
+                        backgroundColor: tipoContaController.botaoSelecionado == 2 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
                         padding: const EdgeInsets.all(20),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(22),

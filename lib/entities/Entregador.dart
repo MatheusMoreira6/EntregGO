@@ -1,7 +1,6 @@
 import 'package:entreggo/entities/Endereco.dart';
 
 class Entregador {
-  int? _id;
   String _nome;
   String _cpf;
   String _rg;
@@ -78,12 +77,6 @@ class Entregador {
     _nome = value;
   }
 
-  int get id => _id!;
-
-  set id(int value) {
-    _id = value;
-  }
-
   Map<String, dynamic> toMap() {
     return {
       'nome': _nome,
@@ -93,8 +86,7 @@ class Entregador {
       'telefone': _telefone,
       'cnh': _cnh,
       'endereco': _endereco.toMap(),
-      'login': _login,
-      'senha': _senha,
+      'tipoConta': 'Entregador'
     };
   }
 }

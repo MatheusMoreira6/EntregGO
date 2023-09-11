@@ -5,8 +5,7 @@ class CadastroEstabelecimento extends StatefulWidget {
   CadastroEstabelecimento({super.key});
 
   @override
-  State<CadastroEstabelecimento> createState() =>
-      _CadastroEstabelecimentoState();
+  State<CadastroEstabelecimento> createState() => _CadastroEstabelecimentoState();
 }
 
 class _CadastroEstabelecimentoState extends State<CadastroEstabelecimento> {

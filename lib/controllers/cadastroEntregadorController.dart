@@ -67,26 +67,41 @@ class CadastroEntregadorController {
       cidade,
     );
 
-    /*
-    * Salva o entregador no banco.
-    */
-    EntregadorModel.salvarEntregador(
-      Entregador(
-        _nome.text,
-        _cpf.text,
-        _rg.text,
-        _email.text,
-        _telefone.text,
-        _numeroCNH.text,
-        endereco,
-        _nomeUsuario.text,
-        senha,
-      ),
-    );
+    try {
+      EntregadorModel.salvarEntregador(
+        Entregador(
+          _nome.text,
+          _cpf.text,
+          _rg.text,
+          _email.text,
+          _telefone.text,
+          _numeroCNH.text,
+          endereco,
+          _nomeUsuario.text,
+          senha,
+        ),
+      ).then((credenciais) {
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => const TipoConta(),
+        //   ),
+        // );
+      });
+    }catch (exception) {
+      if (exception == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (exception == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      } else {
 
-    /*
-    * Limpa todos os campos
-    */
+      }
+    }
+
+    _limparCampos();
+  }
+
+  void _limparCampos() {
     _nome.clear();
     _cpf.clear();
     _rg.clear();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:entreggo/views/login.dart';
-import 'package:entreggo/models/firebaseInitialization.dart';
+import 'package:entreggo/firebase/firebaseInitialization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Login(),
     );
   }

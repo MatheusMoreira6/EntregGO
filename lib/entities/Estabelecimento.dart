@@ -1,7 +1,6 @@
 import 'package:entreggo/entities/Endereco.dart';
 
 class Estabelecimento {
-  int? _id;
   String _razaoSocial;
   String _nomeFantasia;
   DateTime _dataAbertura;
@@ -86,15 +85,8 @@ class Estabelecimento {
     _razaoSocial = value;
   }
 
-  int get id => _id!;
-
-  set id(int value) {
-    _id = value;
-  }
-
   Map<String, dynamic> toMap() {
     return {
-      'id': _id,
       'razaoSocial': _razaoSocial,
       'nomeFantasia': _nomeFantasia,
       'dataAbertura': _dataAbertura.toIso8601String(),
@@ -103,8 +95,7 @@ class Estabelecimento {
       'email': _email,
       'telefone': _telefone,
       'endereco': _endereco.toMap(),
-      'login': _login,
-      'senha': _senha,
+      'tipoConta': 'Estabelecimento',
     };
   }
 }

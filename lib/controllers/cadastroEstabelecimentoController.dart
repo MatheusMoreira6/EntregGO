@@ -70,9 +70,6 @@ class CadastroEstabelecimentoController {
       cidade,
     );
 
-    /*
-    * Salva o entregador no banco.
-    */
     EstabelecimentoModel.salvarEstabelecimento(
       Estabelecimento(
           _razaoSocial.text,
@@ -85,11 +82,25 @@ class CadastroEstabelecimentoController {
           endereco,
           _nomeUsuario.text,
           senha),
-    );
+    ).then((credenciais) {
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => const TipoConta(),
+      //   ),
+      // );
+    }).catchError((exception) {
+      if (exception == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (exception == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      } else {}
+    });
 
-    /*
-    * Limpa todos os campos
-    */
+    _limparCampos();
+  }
+
+  void _limparCampos() {
     _razaoSocial.clear();
     _nomeFantasia.clear();
     _dataAbertura.clear();
