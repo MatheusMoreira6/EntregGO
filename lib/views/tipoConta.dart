@@ -45,85 +45,91 @@ class _TipoContaState extends State<TipoConta> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(15),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          if (tipoContaController.botaoSelecionado != 1) {
-                            tipoContaController.botaoSelecionado = 1;
-                          } else {
-                            tipoContaController.botaoSelecionado = 0;
-                          }
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: tipoContaController.botaoSelecionado == 1 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
-                        padding: const EdgeInsets.all(20),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(22),
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          /*
-                          * https://www.flaticon.com/br/icones-gratis/entrega-de-alimentos"
-                          */
-                          Image.asset(
-                            'assets/images/Entregador.png',
-                            height: 85,
-                            width: 100,
+                    child: SizedBox(
+                      height: 140,
+                      width: 140,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (tipoContaController.botaoSelecionado != 1) {
+                              tipoContaController.botaoSelecionado = 1;
+                            } else {
+                              tipoContaController.botaoSelecionado = 0;
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: tipoContaController.botaoSelecionado == 1 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(22),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Text(
-                              'Entregador',
-                              style: TextStyle(
-                                color: Color(0xFFFFFFFF),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            /*
+                            * https://www.flaticon.com/br/icones-gratis/entrega-de-alimentos"
+                            */
+                            Image.asset(
+                              'assets/images/Entregador.png',
+                              height: 80,
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 10),
+                              child: Text(
+                                'Entregador',
+                                style: TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(15),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          if (tipoContaController.botaoSelecionado != 2) {
-                            tipoContaController.botaoSelecionado = 2;
-                          } else {
-                            tipoContaController.botaoSelecionado = 0;
-                          }
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: tipoContaController.botaoSelecionado == 2 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
-                        padding: const EdgeInsets.all(20),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(22),
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          /*
-                          * https://www.flaticon.com/br/icones-gratis/restaurante
-                          */
-                          Image.asset(
-                            'assets/images/Restaurante.png',
-                            height: 85,
-                            width: 100,
+                    child: SizedBox(
+                      height: 140,
+                      width: 140,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (tipoContaController.botaoSelecionado != 2) {
+                              tipoContaController.botaoSelecionado = 2;
+                            } else {
+                              tipoContaController.botaoSelecionado = 0;
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: tipoContaController.botaoSelecionado == 2 ? const Color(0xFF0ADE72) : const Color(0xFF004AAD),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(22),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Text(
-                              'Estabelecimento',
-                              style: TextStyle(
-                                color: Color(0xFFFFFFFF),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            /*
+                            * https://www.flaticon.com/br/icones-gratis/restaurante
+                            */
+                            Image.asset(
+                              'assets/images/Restaurante.png',
+                              height: 80,
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 10),
+                              child: Text(
+                                'Estabelecimento',
+                                style: TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
