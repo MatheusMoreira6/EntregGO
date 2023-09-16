@@ -10,8 +10,15 @@ class Oferta {
   Entregador? _entregador;
   Estabelecimento _estabelecimento;
 
-  Oferta(this._id, this._dataPostagem, this._dataRealizacao, this._valor,
-      this._rota, this._entregador, this._estabelecimento);
+  Oferta(
+    this._id,
+    this._dataPostagem,
+    this._dataRealizacao,
+    this._valor,
+    this._rota,
+    this._entregador,
+    this._estabelecimento,
+  );
 
   Estabelecimento get estabelecimento => _estabelecimento;
 

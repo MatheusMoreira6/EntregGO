@@ -71,17 +71,8 @@ class CadastroEstabelecimentoController {
     );
 
     EstabelecimentoModel.salvarEstabelecimento(
-      Estabelecimento(
-          _razaoSocial.text,
-          _nomeFantasia.text,
-          DateTime.parse(_dataAbertura.text),
-          _porteEmpresa.text,
-          _cnpj.text,
-          _email.text,
-          _telefone.text,
-          endereco,
-          _nomeUsuario.text,
-          senha),
+      Estabelecimento(_razaoSocial.text, _nomeFantasia.text, DateTime.parse(_dataAbertura.text), _porteEmpresa.text, _cnpj.text,
+          _email.text, _telefone.text, endereco, _nomeUsuario.text, senha),
     ).then((credenciais) {
       // Navigator.push(
       //   context,

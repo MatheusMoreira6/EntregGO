@@ -30,7 +30,10 @@ class _TipoContaState extends State<TipoConta> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Padding(
-                padding: EdgeInsets.only(bottom: 120),
+                padding: EdgeInsets.only(
+                  top: 20,
+                  bottom: 120,
+                ),
                 child: Text(
                   "Tipo de Conta",
                   style: TextStyle(
@@ -147,7 +150,10 @@ class _TipoContaState extends State<TipoConta> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 130),
+                padding: const EdgeInsets.only(
+                  top: 130,
+                  bottom: 20,
+                ),
                 child: ElevatedButton(
                   onPressed: () {
                     tipoContaController.continuar(context);

@@ -2,7 +2,7 @@ import 'package:entreggo/controllers/cadastroEstabelecimentoController.dart';
 import 'package:flutter/material.dart';
 
 class CadastroEstabelecimento extends StatefulWidget {
-  CadastroEstabelecimento({super.key});
+  const CadastroEstabelecimento({super.key});
 
   @override
   State<CadastroEstabelecimento> createState() => _CadastroEstabelecimentoState();
@@ -396,8 +396,7 @@ class _CadastroEstabelecimentoState extends State<CadastroEstabelecimento> {
                               });
                             },
                             checkColor: const Color(0xFF004AAD),
-                            fillColor:
-                                MaterialStateProperty.resolveWith((states) {
+                            fillColor: MaterialStateProperty.resolveWith((states) {
                               return const Color(0xFFFFFFFF);
                             }),
                           ),

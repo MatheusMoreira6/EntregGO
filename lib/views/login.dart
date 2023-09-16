@@ -37,7 +37,10 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(bottom: 45),
+                      padding: EdgeInsets.only(
+                        top: 20,
+                        bottom: 45,
+                      ),
                       child: Text(
                         'EntregGO',
                         style: TextStyle(
@@ -48,7 +51,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 68),
+                      padding: const EdgeInsets.only(bottom: 74),
                       child: Image.asset(
                         'assets/images/Icon.png',
                         height: 130,
@@ -57,7 +60,7 @@ class _LoginState extends State<Login> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        vertical: 12,
+                        vertical: 6,
                         horizontal: 50,
                       ),
                       child: TextFormField(
@@ -68,7 +71,7 @@ class _LoginState extends State<Login> {
                           FocusScope.of(context).requestFocus(loginController.focoSenha);
                         },
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.person),
+                          prefixIcon: Icon(Icons.mail),
                           border: OutlineInputBorder(),
                           labelText: 'E-mail:',
                           labelStyle: TextStyle(
@@ -118,7 +121,7 @@ class _LoginState extends State<Login> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        vertical: 12,
+                        vertical: 6,
                         horizontal: 50,
                       ),
                       child: TextFormField(
@@ -195,7 +198,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 35),
+                      padding: const EdgeInsets.only(top: 41),
                       child: ElevatedButton(
                         focusNode: loginController.focoLogin,
                         onPressed: () => realizarLogin(context),
@@ -220,7 +223,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(bottom: 20),
                       child: TextButton(
                         onPressed: () => loginController.cadastrar(context),
                         child: const Text(
