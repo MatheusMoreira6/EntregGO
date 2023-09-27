@@ -243,7 +243,7 @@ class _CadastroEntregadorState extends State<CadastroEntregador> {
                             inputFormatters: [cadastroEntregadorController.maskRG],
                             validator: (value) => cadastroEntregadorController.validarString(value, 'insira um RG', 'O RG', 6),
                             onFieldSubmitted: (value) {
-                              FocusScope.of(context).requestFocus(cadastroEntregadorController.focoTelefone);
+                              FocusScope.of(context).requestFocus(cadastroEntregadorController.focoNumeroCNH);
                             },
                             keyboardType: TextInputType.number,
                             decoration: const InputDecoration(
@@ -306,7 +306,7 @@ class _CadastroEntregadorState extends State<CadastroEntregador> {
                             inputFormatters: [cadastroEntregadorController.maskCNH],
                             validator: (value) => cadastroEntregadorController.validarString(value, 'insira uma CNH', 'A CNH', 11),
                             onFieldSubmitted: (value) {
-                              FocusScope.of(context).requestFocus(cadastroEntregadorController.focoEmail);
+                              FocusScope.of(context).requestFocus(cadastroEntregadorController.focoTelefone);
                             },
                             keyboardType: TextInputType.number,
                             decoration: const InputDecoration(
@@ -369,7 +369,7 @@ class _CadastroEntregadorState extends State<CadastroEntregador> {
                             inputFormatters: [cadastroEntregadorController.maskTelefone],
                             validator: (value) => cadastroEntregadorController.validarString(value, 'insira um telefone', 'O telefone', 11),
                             onFieldSubmitted: (value) {
-                              FocusScope.of(context).requestFocus(cadastroEntregadorController.focoNumeroCNH);
+                              FocusScope.of(context).requestFocus(cadastroEntregadorController.focoEmail);
                             },
                             keyboardType: TextInputType.number,
                             decoration: const InputDecoration(
@@ -495,7 +495,7 @@ class _CadastroEntregadorState extends State<CadastroEntregador> {
                             focusNode: cadastroEntregadorController.focoSenha,
                             validator: (value) => cadastroEntregadorController.validarSenha(value),
                             onFieldSubmitted: (value) {
-                              FocusScope.of(context).requestFocus(cadastroEntregadorController.focoLogradouro);
+                              cadastroEntregadorController.avancarTela();
                             },
                             decoration: const InputDecoration(
                               prefixIcon: Icon(Icons.lock),
@@ -553,7 +553,6 @@ class _CadastroEntregadorState extends State<CadastroEntregador> {
                             focusNode: cadastroEntregadorController.focoContinuar,
                             onPressed: () {
                               cadastroEntregadorController.avancarTela();
-                              FocusScope.of(context).requestFocus(cadastroEntregadorController.focoLogradouro);
                             },
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(

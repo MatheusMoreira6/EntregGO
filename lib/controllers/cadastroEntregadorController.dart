@@ -182,10 +182,14 @@ class CadastroEntregadorController {
   }
 
   void avancarTela() {
-    _pageController.nextPage(
-      duration: const Duration(milliseconds: 600),
-      curve: Curves.easeInOut,
-    );
+    _pageController
+        .nextPage(
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.easeInOut,
+        )
+        .then(
+          (value) => _focoLogradouro.requestFocus(),
+        );
   }
 
   String? validarString(String? value, String? primeiraMensagem, String? segundaMensagem, int minimoCaracters) {
