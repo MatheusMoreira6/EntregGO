@@ -9,6 +9,9 @@ import 'package:crypto/crypto.dart';
 import 'dart:convert';
 
 class CadastroEntregadorController {
+  /*
+  * Declaração de Variaveis.
+  * */
   final TextEditingController _nome = TextEditingController();
   final TextEditingController _sobrenome = TextEditingController();
   final TextEditingController _cpf = TextEditingController();
@@ -51,13 +54,13 @@ class CadastroEntregadorController {
   bool _checkboxVerificacao = false;
 
   final _maskCPF = MaskTextInputFormatter(mask: '###.###.###-##', filter: {"#": RegExp(r'[0-9]')});
-
   final _maskRG = MaskTextInputFormatter(mask: '##.###.###-#', filter: {"#": RegExp(r'[0-9]')});
-
   final _maskCNH = MaskTextInputFormatter(mask: '###########', filter: {"#": RegExp(r'[0-9]')});
-
   final _maskTelefone = MaskTextInputFormatter(mask: '(##) #####-####', filter: {"#": RegExp(r'[0-9]')});
 
+  /*
+  * Metodos Gets e Sets.
+  * */
   TextEditingController get nome => _nome;
 
   TextEditingController get sobrenome => _sobrenome;
@@ -126,10 +129,6 @@ class CadastroEntregadorController {
 
   bool get checkboxVerificacao => _checkboxVerificacao;
 
-  set checkboxVerificacao(bool value) {
-    _checkboxVerificacao = value;
-  }
-
   get maskCPF => _maskCPF;
 
   get maskRG => _maskRG;
@@ -138,6 +137,13 @@ class CadastroEntregadorController {
 
   get maskTelefone => _maskTelefone;
 
+  set checkboxVerificacao(bool value) {
+    _checkboxVerificacao = value;
+  }
+
+  /*
+  * Metodos de operações da tela.
+  * */
   void cadastrar(BuildContext context) {
     final senha = sha256.convert(utf8.encode(_senha.text)).toString();
 
@@ -190,43 +196,6 @@ class CadastroEntregadorController {
         .then(
           (value) => _focoLogradouro.requestFocus(),
         );
-  }
-
-  String? validarString(String? value, String? primeiraMensagem, String? segundaMensagem, int minimoCaracters) {
-    if (value == null || value.isEmpty) {
-      return 'Por favor, $primeiraMensagem!';
-    }
-
-    if (value.length < minimoCaracters) {
-      return '$segundaMensagem deve ter no minimo $minimoCaracters dígitos!';
-    }
-
-    return null;
-  }
-
-  String? validarEmail(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Por favor, insira um e-mail!';
-    }
-
-    bool emailValid = RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value);
-    if (!emailValid) {
-      return 'Por favor, insira um e-mail válido!';
-    }
-
-    return null;
-  }
-
-  String? validarSenha(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Por favor, insira uma senha!';
-    }
-
-    if (value.length < 8) {
-      return 'A senha deve ter 8 dígitos ou mais!';
-    }
-
-    return null;
   }
 
   void _limparCampos() {
