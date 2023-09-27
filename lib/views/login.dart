@@ -1,4 +1,6 @@
 import 'package:entreggo/controllers/loginController.dart';
+import 'package:entreggo/validate/validateEmail.dart';
+import 'package:entreggo/validate/validatePassword.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -66,7 +68,7 @@ class _LoginState extends State<Login> {
                       child: TextFormField(
                         controller: loginController.email,
                         focusNode: loginController.focoEmail,
-                        validator: (value) => loginController.validarEmail(value),
+                        validator: (value) => ValidateEmail.validate(value),
                         onFieldSubmitted: (value) {
                           FocusScope.of(context).requestFocus(loginController.focoSenha);
                         },
@@ -127,7 +129,7 @@ class _LoginState extends State<Login> {
                       child: TextFormField(
                         controller: loginController.senha,
                         focusNode: loginController.focoSenha,
-                        validator: (value) => loginController.validarSenha(value),
+                        validator: (value) => ValidatePassword.validate(value),
                         onFieldSubmitted: (value) {
                           FocusScope.of(context).requestFocus(loginController.focoLogin);
                           realizarLogin(context);

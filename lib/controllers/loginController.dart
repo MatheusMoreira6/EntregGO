@@ -70,29 +70,4 @@ class LoginController {
       ),
     );
   }
-
-  String? validarEmail(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Por favor, insira um e-mail!';
-    }
-
-    bool emailValid = RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value);
-    if (!emailValid) {
-      return 'Por favor, insira um e-mail válido!';
-    }
-
-    return null;
-  }
-
-  String? validarSenha(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Por favor, insira uma senha!';
-    }
-
-    if (value.length < 8) {
-      return 'A senha deve ter 8 dígitos ou mais!';
-    }
-
-    return null;
-  }
 }
