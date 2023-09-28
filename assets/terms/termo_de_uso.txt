@@ -1,0 +1,35 @@
+Termo de Uso do Aplicativo EntregGO
+
+1. Aceitação dos Termos
+
+Ao utilizar o aplicativo EntregGO, você concorda em fornecer e permitir o armazenamento de suas informações pessoais, conforme descrito neste Termo de Uso. Se você não concordar com os termos aqui estabelecidos, por favor, não utilize o aplicativo.
+
+2. Informações Coletadas
+
+O aplicativo EntregGO coleta as seguintes informações pessoais:
+
+- RG
+- CPF
+- Endereço
+- Dados do veículo (se aplicável)
+- Outros dados conforme necessário
+
+3. Uso das Informações
+
+As informações fornecidas serão utilizadas para facilitar o processo de identificação, acesso ao aplicativo e para conectar clientes que desejam solicitar serviços de entrega a prestadores de serviço disponíveis na plataforma. Não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros sem o seu consentimento expresso.
+
+4. Segurança
+
+Estamos comprometidos em proteger suas informações pessoais. Implementamos medidas de segurança técnicas e organizacionais para proteger suas informações contra acesso, alteração, divulgação ou destruição não autorizada.
+
+5. Consentimento
+
+Ao fornecer suas informações pessoais, você concede ao EntregGO o direito de armazenar, processar e utilizar tais dados conforme descrito neste Termo de Uso.
+
+6. Alterações no Termo de Uso
+
+Reservamo-nos o direito de alterar este Termo de Uso a qualquer momento. Recomendamos que você o revise regularmente. Seu uso contínuo do aplicativo após a publicação de alterações a este Termo de Uso indicará sua aceitação dessas alterações.
+
+7. Contato
+
+Se você tiver alguma dúvida sobre este Termo de Uso ou sobre as práticas deste aplicativo, entre em contato conosco em [endereço de e-mail ou telefone de contato].

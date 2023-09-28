@@ -21,6 +21,7 @@ class CadastroEntregadorController {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _senha = TextEditingController();
 
+  final TextEditingController _cep = TextEditingController();
   final TextEditingController _logradouro = TextEditingController();
   final TextEditingController _numero = TextEditingController();
   final TextEditingController _bairro = TextEditingController();
@@ -36,6 +37,7 @@ class CadastroEntregadorController {
   final FocusNode _focoEmail = FocusNode();
   final FocusNode _focoSenha = FocusNode();
 
+  final FocusNode _focoCEP = FocusNode();
   final FocusNode _focoLogradouro = FocusNode();
   final FocusNode _focoNumero = FocusNode();
   final FocusNode _focoBairro = FocusNode();
@@ -57,6 +59,7 @@ class CadastroEntregadorController {
   final _maskRG = MaskTextInputFormatter(mask: '##.###.###-#', filter: {"#": RegExp(r'[0-9]')});
   final _maskCNH = MaskTextInputFormatter(mask: '###########', filter: {"#": RegExp(r'[0-9]')});
   final _maskTelefone = MaskTextInputFormatter(mask: '(##) #####-####', filter: {"#": RegExp(r'[0-9]')});
+  final _maskCEP = MaskTextInputFormatter(mask: '#####-###', filter: {"#": RegExp(r'[0-9]')});
 
   /*
   * Metodos Gets e Sets.
@@ -69,13 +72,15 @@ class CadastroEntregadorController {
 
   TextEditingController get rg => _rg;
 
-  TextEditingController get telefone => _telefone;
-
   TextEditingController get numeroCNH => _numeroCNH;
+
+  TextEditingController get telefone => _telefone;
 
   TextEditingController get email => _email;
 
   TextEditingController get senha => _senha;
+
+  TextEditingController get cep => _cep;
 
   TextEditingController get logradouro => _logradouro;
 
@@ -95,13 +100,15 @@ class CadastroEntregadorController {
 
   FocusNode get focoRG => _focoRG;
 
-  FocusNode get focoTelefone => _focoTelefone;
-
   FocusNode get focoNumeroCNH => _focoNumeroCNH;
+
+  FocusNode get focoTelefone => _focoTelefone;
 
   FocusNode get focoEmail => _focoEmail;
 
   FocusNode get focoSenha => _focoSenha;
+
+  FocusNode get focoCEP => _focoCEP;
 
   FocusNode get focoLogradouro => _focoLogradouro;
 
@@ -136,6 +143,8 @@ class CadastroEntregadorController {
   get maskCNH => _maskCNH;
 
   get maskTelefone => _maskTelefone;
+
+  get maskCEP => _maskCEP;
 
   set checkboxVerificacao(bool value) {
     _checkboxVerificacao = value;
@@ -188,14 +197,27 @@ class CadastroEntregadorController {
   }
 
   void avancarTela() {
-    _pageController
-        .nextPage(
-          duration: const Duration(milliseconds: 600),
-          curve: Curves.easeInOut,
-        )
-        .then(
-          (value) => _focoLogradouro.requestFocus(),
-        );
+    if (_pageController.hasClients && _pageController.page != null) {
+      int paginaAtual = _pageController.page!.round();
+      bool validarFormulario = false;
+
+      if (_formKeyTela1.currentState != null && identical(paginaAtual, 0)) {
+        validarFormulario = _formKeyTela1.currentState!.validate();
+      } else if (_formKeyTela2.currentState != null && identical(paginaAtual, 1)) {
+        validarFormulario = _formKeyTela2.currentState!.validate();
+      }
+
+      if (paginaAtual >= 0 && paginaAtual <= 1 && validarFormulario) {
+        _pageController
+            .nextPage(
+              duration: const Duration(milliseconds: 600),
+              curve: Curves.easeInOut,
+            )
+            .then(
+              (value) => _focoCEP.requestFocus(),
+            );
+      } else if (paginaAtual == 2) {}
+    }
   }
 
   void _limparCampos() {
