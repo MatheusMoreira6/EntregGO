@@ -1,3 +1,4 @@
+import 'package:entreggo/views/inicioEntregador.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:entreggo/entities/Cidade.dart';
 import 'package:entreggo/entities/Endereco.dart';
@@ -153,50 +154,50 @@ class CadastroEntregadorController {
   /*
   * Metodos de operações da tela.
   * */
-  void cadastrar(BuildContext context) {
+  Future<void> cadastrar(BuildContext context) async {
     final senha = sha256.convert(utf8.encode(_senha.text)).toString();
 
     final Estado estado = Estado(_estado.text);
     final Cidade cidade = Cidade(_cidade.text, estado);
     final Endereco endereco = Endereco(
+      _maskCEP.getMaskedText(),
       _logradouro.text,
       int.parse(numero.text),
       _bairro.text,
       cidade,
     );
 
-    try {
-      EntregadorModel.salvarEntregador(
-        Entregador(
-          _nome.text,
-          _maskCPF.getMaskedText(),
-          _maskRG.getMaskedText(),
-          _maskCNH.getMaskedText(),
-          _maskTelefone.getMaskedText(),
-          _email.text,
-          senha,
-          endereco,
-        ),
-      ).then((credenciais) {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => const TipoConta(),
-        //   ),
-        // );
-      });
-    } catch (exception) {
-      if (exception == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (exception == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      } else {}
-    }
+    EntregadorModel.salvarEntregador(
+      Entregador(
+        _nome.text,
+        _sobrenome.text,
+        _maskCPF.getMaskedText(),
+        _maskRG.getMaskedText(),
+        _maskCNH.getMaskedText(),
+        _maskTelefone.getMaskedText(),
+        _email.text,
+        senha,
+        endereco,
+      ),
+    ).then((credenciais) {
+      if (credenciais.user!.uid.isNotEmpty) {
+        _dialog(context, 'Cadastro Realizado com Sucesso!');
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const InicioEntregador(),
+          ),
+        );
+      }
+    }).catchError((exception) {
+      throw exception;
+    });
 
     _limparCampos();
   }
 
-  void avancarTela() {
+  void avancarTela(BuildContext context) {
     if (_pageController.hasClients && _pageController.page != null) {
       int paginaAtual = _pageController.page!.round();
       bool validarFormulario = false;
@@ -214,10 +215,78 @@ class CadastroEntregadorController {
               curve: Curves.easeInOut,
             )
             .then(
-              (value) => _focoCEP.requestFocus(),
+              (value) => _focoCampoCEP(),
             );
-      } else if (paginaAtual == 2) {}
+      } else if (paginaAtual == 2) {
+        if (_checkboxVerificacao) {
+          cadastrar(context).catchError((exception) {
+            if (exception == 'weak-password') {
+              _pageController.jumpToPage(0);
+              _focoSenha.requestFocus();
+
+              _dialog(context, 'Senha fraca!');
+            } else if (exception == 'email-already-in-use') {
+              _pageController.jumpToPage(0);
+              _focoEmail.requestFocus();
+
+              _dialog(context, 'O email já está em uso!');
+            } else {}
+          });
+        } else {
+          _dialog(context, 'Por favor, aceite os termos de uso!');
+        }
+      }
     }
+  }
+
+  void _focoCampoCEP() {
+    if (_pageController.hasClients && _pageController.page != null && _pageController.page!.round() <= 1) {
+      _focoCEP.requestFocus();
+    }
+  }
+
+  void _dialog(BuildContext context, String text) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: Text(
+                  text,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 15,
+                  bottom: 5,
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF004AAD),
+                  ),
+                  child: const Text('Dispensar'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   void _limparCampos() {
@@ -228,6 +297,7 @@ class CadastroEntregadorController {
     _telefone.clear();
     _email.clear();
     _senha.clear();
+    _cep.clear();
     _logradouro.clear();
     _numero.clear();
     _bairro.clear();

@@ -21,18 +21,30 @@ class CadastroEntregador extends StatefulWidget {
 class _CadastroEntregadorState extends State<CadastroEntregador> {
   final CadastroEntregadorController cadastroEntregadorController = CadastroEntregadorController();
   String? _termoDeUso;
+  int? _paginaAtual;
 
   @override
   void initState() {
     super.initState();
     _loadTermoDeUso();
+    cadastroEntregadorController.pageController.addListener(() {
+      _getPage();
+    });
   }
 
-  _loadTermoDeUso() async {
+  void _loadTermoDeUso() async {
     String termo = await rootBundle.loadString('assets/terms/termo_de_uso.txt');
     setState(() {
       _termoDeUso = termo;
     });
+  }
+
+  void _getPage() {
+    if (cadastroEntregadorController.pageController.hasClients && cadastroEntregadorController.pageController.page != null) {
+      setState(() {
+        _paginaAtual = cadastroEntregadorController.pageController.page!.round();
+      });
+    }
   }
 
   @override
@@ -207,7 +219,7 @@ class _CadastroEntregadorState extends State<CadastroEntregador> {
                                   focusNode: cadastroEntregadorController.focoSenha,
                                   validator: (value) => ValidatePassword.validate(value),
                                   onFieldSubmitted: (value) {
-                                    cadastroEntregadorController.avancarTela();
+                                    cadastroEntregadorController.avancarTela(context);
                                   },
                                   decoration: TextFormFieldDecoration.decoration(
                                     label: 'Senha:',
@@ -319,7 +331,7 @@ class _CadastroEntregadorState extends State<CadastroEntregador> {
                                   focusNode: cadastroEntregadorController.focoEstado,
                                   validator: (value) => ValidateStringEmpty.validate(value),
                                   onFieldSubmitted: (value) {
-                                    cadastroEntregadorController.avancarTela();
+                                    cadastroEntregadorController.avancarTela(context);
                                   },
                                   decoration: TextFormFieldDecoration.decoration(
                                     label: 'Estado:',
@@ -395,7 +407,7 @@ class _CadastroEntregadorState extends State<CadastroEntregador> {
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: ElevatedButton(
                     onPressed: () {
-                      cadastroEntregadorController.avancarTela();
+                      cadastroEntregadorController.avancarTela(context);
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
@@ -407,9 +419,9 @@ class _CadastroEntregadorState extends State<CadastroEntregador> {
                       ),
                       backgroundColor: const Color(0xFF004AAD),
                     ),
-                    child: const Text(
-                      'AVANÇAR',
-                      style: TextStyle(
+                    child: Text(
+                      _paginaAtual == null || _paginaAtual! < 2 ? 'AVANÇAR' : 'FINALIZAR',
+                      style: const TextStyle(
                         color: Color(0xFFFFFFFF),
                         fontSize: 18,
                         fontWeight: FontWeight.w600,

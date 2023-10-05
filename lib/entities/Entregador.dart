@@ -2,6 +2,7 @@ import 'package:entreggo/entities/Endereco.dart';
 
 class Entregador {
   String _nome;
+  String _sobrenome;
   String _cpf;
   String _rg;
   String _cnh;
@@ -12,6 +13,7 @@ class Entregador {
 
   Entregador(
     this._nome,
+    this._sobrenome,
     this._cpf,
     this._rg,
     this._cnh,
@@ -22,6 +24,8 @@ class Entregador {
   );
 
   String get nome => _nome;
+
+  String get sobrenome => _sobrenome;
 
   String get cpf => _cpf;
 
@@ -40,6 +44,7 @@ class Entregador {
   Map<String, dynamic> toMap() {
     return {
       'nome': _nome,
+      'sobrenome': _sobrenome,
       'cpf': _cpf,
       'rg': _rg,
       'telefone': _telefone,

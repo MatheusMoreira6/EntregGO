@@ -1,24 +1,28 @@
+import 'package:intl/intl.dart';
 import 'package:entreggo/entities/Entregador.dart';
 import 'package:entreggo/entities/Estabelecimento.dart';
 
 class Oferta {
-  int _id;
+  int _pontosEntrega;
+  double _valor;
   DateTime _dataPostagem;
   DateTime _dataRealizacao;
-  double _valor;
-  String _rota;
-  Entregador? _entregador;
+  Entregador _entregador;
   Estabelecimento _estabelecimento;
 
-  Oferta(
-    this._id,
-    this._dataPostagem,
-    this._dataRealizacao,
-    this._valor,
-    this._rota,
-    this._entregador,
-    this._estabelecimento,
-  );
+  Oferta({
+    required int pontosEntrega,
+    required double valor,
+    required DateTime dataPostagem,
+    required DateTime dataRealizacao,
+    required Entregador entregador,
+    required Estabelecimento estabelecimento,
+  })  : _pontosEntrega = pontosEntrega,
+        _valor = valor,
+        _dataPostagem = dataPostagem,
+        _dataRealizacao = dataRealizacao,
+        _entregador = entregador,
+        _estabelecimento = estabelecimento;
 
   Estabelecimento get estabelecimento => _estabelecimento;
 
@@ -26,16 +30,16 @@ class Oferta {
     _estabelecimento = value;
   }
 
-  Entregador get entregador => _entregador!;
+  Entregador get entregador => _entregador;
 
   set entregador(Entregador value) {
     _entregador = value;
   }
 
-  String get rota => _rota;
+  int get pontosEntrega => _pontosEntrega;
 
-  set rota(String value) {
-    _rota = value;
+  set pontosEntrega(int value) {
+    _pontosEntrega = value;
   }
 
   double get valor => _valor;
@@ -44,21 +48,19 @@ class Oferta {
     _valor = value;
   }
 
-  DateTime get dataRealizacao => _dataRealizacao;
+  String getDataRealizacao() {
+    return DateFormat('dd/MM/yyyy').format(_dataRealizacao);
+  }
 
   set dataRealizacao(DateTime value) {
     _dataRealizacao = value;
   }
 
-  DateTime get dataPostagem => _dataPostagem;
+  String getDataPostagem() {
+    return DateFormat('dd/MM/yyyy').format(_dataPostagem);
+  }
 
   set dataPostagem(DateTime value) {
     _dataPostagem = value;
-  }
-
-  int get id => _id;
-
-  set id(int value) {
-    _id = value;
   }
 }

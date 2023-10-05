@@ -1,12 +1,13 @@
 import 'package:entreggo/entities/Cidade.dart';
 
 class Endereco {
-  String _rua;
+  String _cep;
+  String _logradouro;
   int _numero;
   String _bairro;
   Cidade _cidade;
 
-  Endereco(this._rua, this._numero, this._bairro, this._cidade);
+  Endereco(this._cep, this._logradouro, this._numero, this._bairro, this._cidade);
 
   Cidade get cidade => _cidade;
 
@@ -26,15 +27,15 @@ class Endereco {
     _numero = value;
   }
 
-  String get rua => _rua;
+  String get rua => _logradouro;
 
   set rua(String value) {
-    _rua = value;
+    _logradouro = value;
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'rua': _rua,
+      'logradouro': _logradouro,
       'numero': _numero,
       'bairro': _bairro,
       'cidade': _cidade.toMap(),

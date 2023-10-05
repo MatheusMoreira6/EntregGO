@@ -15,6 +15,7 @@ class CadastroEstabelecimentoController {
   final TextEditingController _cnpj = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _telefone = TextEditingController();
+  final TextEditingController _cep = TextEditingController();
   final TextEditingController _logradouro = TextEditingController();
   final TextEditingController _numero = TextEditingController();
   final TextEditingController _bairro = TextEditingController();
@@ -64,6 +65,7 @@ class CadastroEstabelecimentoController {
     final Estado estado = Estado(_estado.text);
     final Cidade cidade = Cidade(_cidade.text, estado);
     final Endereco endereco = Endereco(
+      _cep.text,
       _logradouro.text,
       int.parse(numero.text),
       _bairro.text,
